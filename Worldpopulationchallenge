@@ -1,0 +1,32 @@
+
+
+SELECT DISTINCT year from population_years;
+
+SELECT *
+FROM population_years
+WHERE country = 'Gabon'
+ORDER BY population DESC;
+
+SELECT *
+FROM population_years
+WHERE year = '2005'
+  AND population ASC
+LIMIT = 10; 
+
+SELECT DISTINCT country
+FROM population_years
+WHERE population > '100 million'
+  AND year = '2010';
+ 
+SELECT *
+FROM population_years
+WHERE name LIKE '%Islands%';
+
+SELECT *
+FROM population_years
+WHERE country = 'INDONESIA'
+  AND year = '2000'
+WHERE country = 'INDONESIA'
+  AND year = '2010';
+  
+  
