@@ -1,0 +1,65 @@
+Total number of African Countries
+SELECT COUNT(*) AS ‘Total number of African Countries’ FROM countries WHERE continent = ‘Africa’;
+56
+
+SELECT countries.continent, SUM(population_years.population) AS ‘Total population of Oceania continent in 2005’
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE continent = ‘Oceania’ AND
+year = 2005;
+continent Total population of Oceania continent in 2005
+Oceania 32.66417
+
+SELECT countries.continent, AVG(population_years.population) AS ‘Average population of countries in South America in 2003’
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE continent = ‘South America’ AND
+year = 2003;
+continent Average population of countries in South America in 2003
+South America 25.8906514285714
+
+SELECT countries.name, MIN(population_years.population) AS ‘Smallest population in 2007’
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE year = 2007;
+name Smallest population in 2007
+Niue 0.00216
+
+SELECT countries.name, AVG(population_years.population) AS ‘Average population of Poland from 2000-2010’
+FROM countries JOIN population_years
+ON countries.id =
+population_years.country_id
+WHERE name = ‘Poland’;
+name Average population of Poland from 2000-2010
+Poland 30.4598338672377
+
+WITH countries_with_the AS (
+SELECT DISTINCT *
+FROM countries
+WHERE countries.name LIKE ‘%The%’
+)
+
+SELECT COUNT(*) AS ‘Countries with the word “The” in their name’
+FROM countries_with_the;
+Countries with the word “The” in their name
+4
+
+SELECT countries.continent, SUM(population_years.population) AS ’ Total population of each continent in 2010’
+FROM countries
+JOIN population_years
+ON countries.id = population_years.country_id
+WHERE population_years.year = 2010
+GROUP BY 1;
+continent Total population of each continent in 2010
+Africa 1015.47846
+Asia 4133.09148
+Europe 723.06044
+North America 539.79456
+Oceania 34.95696
+South America 396.58235
+
+
+
